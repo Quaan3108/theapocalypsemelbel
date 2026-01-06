@@ -486,7 +486,7 @@ local function toggleInvisible()
         end
     end)
     
-    Library:Notify("Невидимость включена", 3)
+    Library:Notify("Đã bật tàng hình", 3)
 end
 
 local function createESP(obj, isEnemy, isPlayer, enemyType, customName, playerName)
@@ -869,7 +869,7 @@ local function teleportToWaypoint(waypointId)
     if not humanoidRootPart then return end
     
     humanoidRootPart.CFrame = CFrame.new(waypoint.position + Vector3.new(0, 5, 0))
-    Library:Notify("Телепортирован к '" .. waypoint.name .. "'", 3)
+    Library:Notify("Dịch chuyểnирован к '" .. waypoint.name .. "'", 3)
 end
 
 local function deleteWaypoint(waypointId)
@@ -959,7 +959,7 @@ local function teleportToNearestPlayer()
     if not targetHumanoidRootPart then return end
     
     humanoidRootPart.CFrame = CFrame.new(targetHumanoidRootPart.Position + Vector3.new(0, 5, 0))
-    Library:Notify("Телепортирован к " .. nearestPlayer.Name .. " (" .. math.floor(distance) .. " studs)", 3)
+    Library:Notify("Dịch chuyểnирован к " .. nearestPlayer.Name .. " (" .. math.floor(distance) .. " studs)", 3)
 end
 
 local function moveToObject(objPosition, speed)
@@ -1492,12 +1492,12 @@ local Tabs = {
     Hitbox = Window:AddTab("Hitbox", "target"),
 }
 
-local AutoFarmGroup = Tabs.Main:AddLeftGroupbox("AutoFarm Ресурсы")
+local AutoFarmGroup = Tabs.Main:AddLeftGroupbox("AutoFarm Tài nguyên")
 
 AutoFarmGroup:AddToggle("AutoFarmToggle", {
-    Text = "Включить AutoFarm Ресурсов",
+    Text = "Bật AutoFarm tài nguyên",
     Default = false,
-    Tooltip = "Плавное движение к выбранным ресурсам с авто-прицелом",
+    Tooltip = "Di chuyển mượt đến tài nguyên đã chọn kèm tự ngắm",
     
     Callback = function(Value)
         if Value then
@@ -1509,7 +1509,7 @@ AutoFarmGroup:AddToggle("AutoFarmToggle", {
 })
 
 AutoFarmGroup:AddSlider("FarmFlySpeed", {
-    Text = "Скорость AutoFarm",
+    Text = "Tốc độ AutoFarm",
     Default = 50,
     Min = 20,
     Max = 100,
@@ -1520,12 +1520,12 @@ AutoFarmGroup:AddSlider("FarmFlySpeed", {
 })
 
 AutoFarmGroup:AddSlider("AimSmoothness", {
-    Text = "Плавность прицела",
+    Text = "Độ mượt khi ngắm",
     Default = 0.3,
     Min = 0.01,
     Max = 0.9,
     Rounding = 2,
-    Tooltip = "Чем меньше значение, тем быстрее камера поворачивается на объект",
+    Tooltip = "Giá trị càng thấp thì camera xoay càng nhanh",
     Callback = function(Value)
         _G.AimSmoothness = Value
     end
@@ -1533,12 +1533,12 @@ AutoFarmGroup:AddSlider("AimSmoothness", {
 
 AutoFarmGroup:AddDivider()
 
-AutoFarmGroup:AddButton("Выбрать все ресурсы для фарма", function()
+AutoFarmGroup:AddButton("Chọn tất cả tài nguyên để farm", function()
     toggleAllObjects(true)
     Library:Notify("Все ресурсы выбраны для фарма!", 3)
 end)
 
-AutoFarmGroup:AddButton("Отменить все ресурсы для фарма", function()
+AutoFarmGroup:AddButton("Bỏ chọn toàn bộ tài nguyên farm", function()
     toggleAllObjects(false)
     Library:Notify("Все ресурсы отменены для фарма!", 3)
 end)
@@ -1557,12 +1557,12 @@ for _, objName in pairs(_G.AvailableObjects) do
     })
 end
 
-local MovementGroup = Tabs.Main:AddRightGroupbox("Движение")
+local MovementGroup = Tabs.Main:AddRightGroupbox("Di chuyển")
 
 MovementGroup:AddToggle("FlyToggle", {
-    Text = "Включить Fly",
+    Text = "Bật Fly",
     Default = false,
-    Tooltip = "WASD - движение, Q/E - вниз/вверх",
+    Tooltip = "WASD để di chuyển, Q/E lên xuống",
     
     Callback = function(Value)
         toggleFly()
@@ -1570,9 +1570,9 @@ MovementGroup:AddToggle("FlyToggle", {
 })
 
 MovementGroup:AddToggle("NoClipToggle", {
-    Text = "Включить NoClip",
+    Text = "Bật NoClip",
     Default = false,
-    Tooltip = "Проходить сквозь стены",
+    Tooltip = "Đi xuyên tường",
     
     Callback = function(Value)
         toggleNoClip()
@@ -1580,9 +1580,9 @@ MovementGroup:AddToggle("NoClipToggle", {
 })
 
 MovementGroup:AddToggle("InfJumpToggle", {
-    Text = "Включить InfJump",
+    Text = "Bật InfJump",
     Default = false,
-    Tooltip = "Бесконечный прыжок (пробел)",
+    Tooltip = "Nhảy InfJump (Space)",
     
     Callback = function(Value)
         toggleInfJump()
@@ -1606,10 +1606,10 @@ CameraGroup:AddButton("Отключить тряску камеры", function()
     Library:Notify("Тряска камеры отключена!", 3)
 end)
 
-local PlayerGroup = Tabs.Player:AddLeftGroupbox("Характеристики")
+local PlayerGroup = Tabs.Player:AddLeftGroupbox("Thuộc tính nhân vật")
 
 PlayerGroup:AddToggle("SpeedToggle", {
-    Text = "Изменить скорость",
+    Text = "Thay đổi tốc độ",
     Default = false,
     
     Callback = function(Value)
@@ -1633,7 +1633,7 @@ PlayerGroup:AddToggle("SpeedToggle", {
 })
 
 PlayerGroup:AddSlider("SpeedValue", {
-    Text = "Скорость бега",
+    Text = "Tốc độ chạy",
     Default = 50,
     Min = 16,
     Max = 200,
@@ -1641,16 +1641,16 @@ PlayerGroup:AddSlider("SpeedValue", {
 })
 
 PlayerGroup:AddToggle("InvisibleToggle", {
-    Text = "Включить невидимость",
+    Text = "Bật tàng hình",
     Default = false,
-    Tooltip = "Сделает вашего персонажа невидимым",
+    Tooltip = "Làm nhân vật của bạn trở nên vô hình",
     
     Callback = function(Value)
         toggleInvisible()
     end,
 })
 
-local TeleportGroup = Tabs.Teleport:AddLeftGroupbox("Телепорт")
+local TeleportGroup = Tabs.Teleport:AddLeftGroupbox("Dịch chuyển")
 
 TeleportGroup:AddToggle("ClickTPToggle", {
     Text = "Включить ClickTP",
@@ -1659,25 +1659,25 @@ TeleportGroup:AddToggle("ClickTPToggle", {
     Callback = function(Value)
         if Value then
             setupClickTP()
-            Library:Notify("ClickTP включен! Кликайте ЛКМ для телепортации", 3)
+            Library:Notify("ClickTP включен! Кликайте ЛКМ для Dịch chuyểnации", 3)
         end
     end,
 })
 
-TeleportGroup:AddButton("Телепорт к ближайшему игроку", function()
+TeleportGroup:AddButton("Dịch chuyển к ближайшему игроку", function()
     teleportToNearestPlayer()
 end)
 
 local WaypointsGroup = Tabs.Teleport:AddRightGroupbox("Waypoints")
 
 local waypointNameInput = WaypointsGroup:AddInput("WaypointNameInput", {
-    Text = "Название Waypoint",
+    Text = "Tên Waypoint",
     Default = "Waypoint",
-    Tooltip = "Введите название для сохранения позиции",
-    Placeholder = "Введите название",
+    Tooltip = "Nhập tên для сохранения позиции",
+    Placeholder = "Nhập tên",
 })
 
-WaypointsGroup:AddButton("Сохранить Waypoint", function()
+WaypointsGroup:AddButton("Lưu Waypoint", function()
     local name = Options.WaypointNameInput.Value or "Waypoint"
     saveWaypoint(name)
 end)
@@ -1685,10 +1685,10 @@ end)
 WaypointsGroup:AddDivider()
 
 local waypointsList = WaypointsGroup:AddDropdown("WaypointsList", {
-    Text = "Сохраненные Waypoints",
+    Text = "Waypoint đã lưu",
     Default = 1,
     Values = {},
-    Tooltip = "Выберите waypoint для телепортации",
+    Tooltip = "Выберите waypoint для Dịch chuyểnации",
     
     Callback = function(Value)
         _G.SelectedWaypoint = Value
@@ -1711,7 +1711,7 @@ local function updateWaypointsList()
     end
 end
 
-WaypointsGroup:AddButton("Телепорт к выбранному Waypoint", function()
+WaypointsGroup:AddButton("Dịch chuyển к выбранному Waypoint", function()
     if _G.SelectedWaypoint then
         for id, waypoint in pairs(_G.Waypoints) do
             local displayName = waypoint.name .. " (" .. math.floor(waypoint.position.X) .. ", " .. math.floor(waypoint.position.Y) .. ", " .. math.floor(waypoint.position.Z) .. ")"
@@ -1724,7 +1724,7 @@ WaypointsGroup:AddButton("Телепорт к выбранному Waypoint", fu
     Library:Notify("Выберите waypoint из списка!", 3)
 end)
 
-WaypointsGroup:AddButton("Удалить выбранный Waypoint", function()
+WaypointsGroup:AddButton("Xóa Waypoint đã chọn", function()
     if _G.SelectedWaypoint then
         for id, waypoint in pairs(_G.Waypoints) do
             local displayName = waypoint.name .. " (" .. math.floor(waypoint.position.X) .. ", " .. math.floor(waypoint.position.Y) .. ", " .. math.floor(waypoint.position.Z) .. ")"
@@ -1738,7 +1738,7 @@ WaypointsGroup:AddButton("Удалить выбранный Waypoint", function(
     Library:Notify("Выберите waypoint из списка!", 3)
 end)
 
-WaypointsGroup:AddButton("Обновить список Waypoints", function()
+WaypointsGroup:AddButton("Cập nhật danh sách Waypoint", function()
     updateWaypointsList()
     Library:Notify("Список waypoints обновлен!", 3)
 end)
@@ -1787,12 +1787,12 @@ HeadHitboxGroup:AddToggle("ShowHeadHitboxToggle", {
     end
 })
 
-local ESPResourcesGroup = Tabs.ESP:AddLeftGroupbox("ESP Ресурсы")
+local ESPResourcesGroup = Tabs.ESP:AddLeftGroupbox("ESP Tài nguyên")
 
 ESPResourcesGroup:AddToggle("ESPToggle", {
-    Text = "Включить ESP для ресурсов",
+    Text = "Bật ESP tài nguyên",
     Default = false,
-    Tooltip = "Показывает выбранные ресурсы из папки Spawned",
+    Tooltip = "Hiển thị tài nguyên đã chọn trong Spawned",
     
     Callback = function(Value)
         toggleESP()
@@ -1827,10 +1827,10 @@ ESPResourcesGroup:AddButton("Отменить все ресурсы", function()
     Library:Notify("Все ресурсы отменены для ESP!", 3)
 end)
 
-local ESPEnemiesGroup = Tabs.ESP:AddRightGroupbox("ESP Враги")
+local ESPEnemiesGroup = Tabs.ESP:AddRightGroupbox("ESP Kẻ địch")
 
 ESPEnemiesGroup:AddToggle("EnemyESPToggle", {
-    Text = "Включить ESP для врагов",
+    Text = "Bật ESP kẻ địch",
     Default = false,
     Tooltip = "Показывает выбранных врагов из папки Enemies",
     
@@ -1867,10 +1867,10 @@ ESPEnemiesGroup:AddButton("Отменить всех врагов", function()
     Library:Notify("Все враги отменены для ESP!", 3)
 end)
 
-local ESPPlayersGroup = Tabs.ESP:AddLeftGroupbox("ESP Игроков")
+local ESPPlayersGroup = Tabs.ESP:AddLeftGroupbox("ESP Người chơi")
 
 ESPPlayersGroup:AddToggle("PlayerESPToggle", {
-    Text = "Включить ESP для игроков",
+    Text = "Bật ESP người chơi",
     Default = false,
     Tooltip = "Показывает всех игроков на сервере",
     
