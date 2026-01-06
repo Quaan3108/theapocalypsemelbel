@@ -1857,9 +1857,9 @@ end
 
 ESPEnemiesGroup:AddDivider()
 
-ESPEnemiesGroup:AddButton("Выбрать всех врагов", function()
+ESPEnemiesGroup:AddButton("Chọn tất cả kẻ thù", function()
     toggleAllEnemies(true)
-    Library:Notify("Все враги выбраны для ESP!", 3)
+    Library:Notify("Tất cả kẻ thù đều được chọn để sử dụng ESP!", 3)
 end)
 
 ESPEnemiesGroup:AddButton("Hủy bỏ tất cả kẻ thù", function()
@@ -1879,9 +1879,9 @@ ESPPlayersGroup:AddToggle("PlayerESPToggle", {
     end,
 })
 
-local SettingsTab = Window:AddTab("Настройки UI", "settings")
+local SettingsTab = Window:AddTab("Cài đặt giao diện người dùng", "settings")
 
-local UIGroup = SettingsTab:AddLeftGroupbox("Управление")
+local UIGroup = SettingsTab:AddLeftGroupbox("quản lý")
 
 UIGroup:AddToggle("KeybindMenuOpen", {
     Default = Library.KeybindFrame.Visible,
@@ -1891,7 +1891,7 @@ UIGroup:AddToggle("KeybindMenuOpen", {
     end,
 })
 
-UIGroup:AddLabel("Клавиша меню"):AddKeyPicker("MenuKeybind", { 
+UIGroup:AddLabel("Phím menu"):AddKeyPicker("MenuKeybind", { 
     Default = "RightShift", 
     NoUI = true, 
     Text = "Phím menu" 
@@ -1900,7 +1900,7 @@ UIGroup:AddLabel("Клавиша меню"):AddKeyPicker("MenuKeybind", {
 Library.ToggleKeybind = Options.MenuKeybind
 
 UIGroup:AddDivider()
-UIGroup:AddButton("Tải lên kịch bản", function()
+UIGroup:AddButton("anvaodaybigay", function()
     stopAutoFarm()
     _G.Flying = false
     if _G.FlyBodyVelocity then
