@@ -486,7 +486,7 @@ local function toggleInvisible()
         end
     end)
     
-    Library:Notify("Đã bật tàng hình", 3)
+    Library:Notify("Đã tắt tàng hình", 3)
 end
 
 local function createESP(obj, isEnemy, isPlayer, enemyType, customName, playerName)
