@@ -4,7 +4,7 @@ local success, Library = pcall(function()
 end)
 
 if not success then
-    error("Не удалось загрузить библиотеку!")
+    error("Không thể tải thư viện!")
 end
 
 local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
@@ -276,7 +276,7 @@ local function toggleShowHeadHitbox()
             _G.HeadHitboxConnection = nil
         end
         
-        Library:Notify("Красивые хитбоксы отключены", 3)
+        Library:Notify("Đã tắt hitbox đẹp", 3)
         return
     end
     
@@ -335,7 +335,7 @@ local function toggleShowHeadHitbox()
         end
     end)
     
-    Library:Notify("Красивые фиолетовые хитбоксы включены", 3)
+    Library:Notify("Đã bật hitbox tím đẹp", 3)
 end
 
 local function applyHitboxToEnemy(enemy, multiplier)
@@ -394,7 +394,7 @@ local function toggleHitbox()
         
         resetEnemyHitboxes()
         
-        Library:Notify("Авто-хитбокс отключен", 3)
+        Library:Notify("Đã tắt auto hitbox", 3)
         return
     end
     
@@ -419,7 +419,7 @@ local function toggleHitbox()
         _G.HitboxConnection = enemiesFolder.ChildAdded:Connect(onEnemyAdded)
     end
     
-    Library:Notify("Авто-хитбокс включен", 3)
+    Library:Notify("Đã bật auto hitbox", 3)
 end
 
 local function toggleInvisible()
@@ -444,7 +444,7 @@ local function toggleInvisible()
             end
         end
         
-        Library:Notify("Невидимость отключена", 3)
+        Library:Notify("Đã bật tàng hình", 3)
         return
     end
     
@@ -831,13 +831,13 @@ end
 local function saveWaypoint(name)
     local character = player.Character
     if not character then 
-        Library:Notify("Ошибка: Персонаж не найден!", 3)
+        Library:Notify("Lỗi: Không tìm thấy nhân vật!", 3)
         return 
     end
     
     local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
     if not humanoidRootPart then 
-        Library:Notify("Ошибка: HumanoidRootPart не найден!", 3)
+        Library:Notify("Lỗi: Không tìm thấy HumanoidRootPart!", 3)
         return 
     end
     
@@ -858,7 +858,7 @@ end
 local function teleportToWaypoint(waypointId)
     local waypoint = _G.Waypoints[waypointId]
     if not waypoint then 
-        Library:Notify("Waypoint не найден!", 3)
+        Library:Notify("Không tìm thấy waypoint!", 3)
         return 
     end
     
@@ -942,7 +942,7 @@ end
 local function teleportToNearestPlayer()
     local nearestPlayer, distance = findNearestPlayer()
     if not nearestPlayer then
-        Library:Notify("Игроки не найдены!", 3)
+        Library:Notify("Không tìm thấy người chơi!", 3)
         return
     end
     
@@ -1174,7 +1174,7 @@ local function startAutoFarm()
     end
     
     if not hasSelectedObjects then
-        Library:Notify("Ошибка: Не выбрано ни одного объекта для фарма!", 5)
+        Library:Notify("Lỗi: Chưa chọn tài nguyên để farm!", 5)
         return
     end
     
@@ -1477,17 +1477,17 @@ local function toggleSpeed()
 end
 
 local Window = Library:CreateWindow({
-    Title = "RobloxMAN",
-    Footer = "AutoFarm + ESP + Красивые хитбоксы + Телепорт + Waypoints + Невидимость",
-    Icon = 95816097006870,
+    Title = "melbel🐧",
+    Footer = "AutoFarm + ESP + Hitbox đẹp + Teleport + Waypoints + Tàng hình",
+    Icon = 15740602925,
     NotifySide = "Right",
     ShowCustomCursor = true,
 })
 
 local Tabs = {
-    Main = Window:AddTab("Главная", "home"),
-    Player = Window:AddTab("Игрок", "user"),
-    Teleport = Window:AddTab("Телепорт", "move"),
+    Main = Window:AddTab("Chính", "home"),
+    Player = Window:AddTab("Nhân vật", "user"),
+    Teleport = Window:AddTab("Dịch chuyển", "move"),
     ESP = Window:AddTab("ESP", "eye"),
     Hitbox = Window:AddTab("Hitbox", "target"),
 }
