@@ -1740,15 +1740,15 @@ end)
 
 WaypointsGroup:AddButton("Cập nhật danh sách Waypoint", function()
     updateWaypointsList()
-    Library:Notify("Список waypoints обновлен!", 3)
+    Library:Notify("Danh sách điểm định vị đã được cập nhật!", 3)
 end)
 
 local HitboxGroup = Tabs.Hitbox:AddLeftGroupbox("Hitbox Multiplier")
 
 HitboxGroup:AddToggle("AutoHitboxToggle", {
-    Text = "Включить авто-хитбокс",
+    Text = "Bật chế độ tự động chọn vùng va chạm",
     Default = false,
-    Tooltip = "Автоматически применяет хитбокс ко всем врагам",
+    Tooltip = "Tự động áp dụng vùng va chạm (hitbox) cho tất cả kẻ thù.",
     
     Callback = function(Value)
         toggleHitbox()
@@ -1761,7 +1761,7 @@ HitboxGroup:AddSlider("HitboxMultiplier", {
     Min = 1,
     Max = 20,
     Rounding = 0,
-    Tooltip = "Изменяет размер хитбокса врагов (Head.Size)",
+    Tooltip = "Thay đổi kích thước vùng va chạm của kẻ địch (Head.Size)",
     
     Callback = function(Value)
         if _G.HitboxEnabled then
@@ -1772,15 +1772,15 @@ HitboxGroup:AddSlider("HitboxMultiplier", {
 
 HitboxGroup:AddDivider()
 
-local HeadHitboxGroup = Tabs.Hitbox:AddRightGroupbox("Красивые хитбоксы голов")
+local HeadHitboxGroup = Tabs.Hitbox:AddRightGroupbox("Vùng va chạm đầu đẹp")
 
-HeadHitboxGroup:AddLabel("Стильные фиолетовые хитбоксы")
-HeadHitboxGroup:AddLabel("Яркие и прозрачные")
+HeadHitboxGroup:AddLabel("Vùng va chạm màu tím phong cách")
+HeadHitboxGroup:AddLabel("Sáng và trong suốt")
 
 HeadHitboxGroup:AddToggle("ShowHeadHitboxToggle", {
-    Text = "Включить красивые хитбоксы",
+    Text = "Kích hoạt vùng va chạm đẹp mắt",
     Default = false,
-    Tooltip = "Показывает стильные фиолетовые хитбоксы голов врагов",
+    Tooltip = "Hiển thị các vùng va chạm màu tím bắt mắt trên đầu kẻ thù.",
     
     Callback = function(Value)
         toggleShowHeadHitbox()
@@ -1817,14 +1817,14 @@ end
 
 ESPResourcesGroup:AddDivider()
 
-ESPResourcesGroup:AddButton("Выбрать все ресурсы", function()
+ESPResourcesGroup:AddButton("Chọn tất cả các nguồn lực", function()
     toggleAllResources(true)
-    Library:Notify("Все ресурсы выбраны для ESP!", 3)
+    Library:Notify("Tất cả tài liệu được chọn cho ESP!", 3)
 end)
 
-ESPResourcesGroup:AddButton("Отменить все ресурсы", function()
+ESPResourcesGroup:AddButton("Hủy bỏ tất cả tài nguyên", function()
     toggleAllResources(false)
-    Library:Notify("Все ресурсы отменены для ESP!", 3)
+    Library:Notify("Tất cả tài nguyên đều bị hủy bỏ cho ESP!", 3)
 end)
 
 local ESPEnemiesGroup = Tabs.ESP:AddRightGroupbox("ESP Kẻ địch")
@@ -1832,7 +1832,7 @@ local ESPEnemiesGroup = Tabs.ESP:AddRightGroupbox("ESP Kẻ địch")
 ESPEnemiesGroup:AddToggle("EnemyESPToggle", {
     Text = "Bật ESP kẻ địch",
     Default = false,
-    Tooltip = "Показывает выбранных врагов из папки Enemies",
+    Tooltip = "Hiển thị các kẻ thù đã chọn từ thư mục Kẻ thù.",
     
     Callback = function(Value)
         toggleEnemyESP()
@@ -1862,9 +1862,9 @@ ESPEnemiesGroup:AddButton("Выбрать всех врагов", function()
     Library:Notify("Все враги выбраны для ESP!", 3)
 end)
 
-ESPEnemiesGroup:AddButton("Отменить всех врагов", function()
+ESPEnemiesGroup:AddButton("Hủy bỏ tất cả kẻ thù", function()
     toggleAllEnemies(false)
-    Library:Notify("Все враги отменены для ESP!", 3)
+    Library:Notify("Tất cả kẻ thù đều bị tiêu diệt nhờ ESP!", 3)
 end)
 
 local ESPPlayersGroup = Tabs.ESP:AddLeftGroupbox("ESP Người chơi")
@@ -1872,7 +1872,7 @@ local ESPPlayersGroup = Tabs.ESP:AddLeftGroupbox("ESP Người chơi")
 ESPPlayersGroup:AddToggle("PlayerESPToggle", {
     Text = "Bật ESP người chơi",
     Default = false,
-    Tooltip = "Показывает всех игроков на сервере",
+    Tooltip = "Hiển thị tất cả người chơi trên máy chủ",
     
     Callback = function(Value)
         togglePlayerESP()
@@ -1885,7 +1885,7 @@ local UIGroup = SettingsTab:AddLeftGroupbox("Управление")
 
 UIGroup:AddToggle("KeybindMenuOpen", {
     Default = Library.KeybindFrame.Visible,
-    Text = "Показать меню клавиш",
+    Text = "Hiển thị menu chính",
     Callback = function(value)
         Library.KeybindFrame.Visible = value
     end,
@@ -1894,13 +1894,13 @@ UIGroup:AddToggle("KeybindMenuOpen", {
 UIGroup:AddLabel("Клавиша меню"):AddKeyPicker("MenuKeybind", { 
     Default = "RightShift", 
     NoUI = true, 
-    Text = "Клавиша меню" 
+    Text = "Phím menu" 
 })
 
 Library.ToggleKeybind = Options.MenuKeybind
 
 UIGroup:AddDivider()
-UIGroup:AddButton("Выгрузить скрипт", function()
+UIGroup:AddButton("Tải lên kịch bản", function()
     stopAutoFarm()
     _G.Flying = false
     if _G.FlyBodyVelocity then
