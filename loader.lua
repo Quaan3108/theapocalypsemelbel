@@ -1535,16 +1535,16 @@ AutoFarmGroup:AddDivider()
 
 AutoFarmGroup:AddButton("Chọn tất cả tài nguyên để farm", function()
     toggleAllObjects(true)
-    Library:Notify("Все ресурсы выбраны для фарма!", 3)
+    Library:Notify("Tất cả tài nguyên đều được lựa chọn để phục vụ nông nghiệp!", 3)
 end)
 
 AutoFarmGroup:AddButton("Bỏ chọn toàn bộ tài nguyên farm", function()
     toggleAllObjects(false)
-    Library:Notify("Все ресурсы отменены для фарма!", 3)
+    Library:Notify("Tất cả tài nguyên dành cho nông nghiệp đều bị hủy bỏ!", 3)
 end)
 
 AutoFarmGroup:AddDivider()
-AutoFarmGroup:AddLabel("Выбор ресурсов:")
+AutoFarmGroup:AddLabel("Chọn nguồn tài nguyên:")
 
 for _, objName in pairs(_G.AvailableObjects) do
     AutoFarmGroup:AddToggle("FarmObject_" .. objName, {
@@ -1589,21 +1589,21 @@ MovementGroup:AddToggle("InfJumpToggle", {
     end,
 })
 
-local FlySettingsGroup = Tabs.Main:AddLeftGroupbox("Настройки Fly")
+local FlySettingsGroup = Tabs.Main:AddLeftGroupbox("Cài đặt bay")
 
 FlySettingsGroup:AddSlider("FlySpeed", {
-    Text = "Скорость Fly",
+    Text = "Bay",
     Default = 50,
     Min = 10,
     Max = 200,
     Rounding = 0,
 })
 
-local CameraGroup = Tabs.Main:AddRightGroupbox("Настройки камеры")
+local CameraGroup = Tabs.Main:AddRightGroupbox("Tắt chế độ rung máy ảnh")
 
-CameraGroup:AddButton("Отключить тряску камеры", function()
+CameraGroup:AddButton("Tắt chế độ rung máy ảnh", function()
     disableCameraShake()
-    Library:Notify("Тряска камеры отключена!", 3)
+    Library:Notify("Chức năng chống rung camera đã bị tắt!", 3)
 end)
 
 local PlayerGroup = Tabs.Player:AddLeftGroupbox("Thuộc tính nhân vật")
@@ -1653,18 +1653,18 @@ PlayerGroup:AddToggle("InvisibleToggle", {
 local TeleportGroup = Tabs.Teleport:AddLeftGroupbox("Dịch chuyển")
 
 TeleportGroup:AddToggle("ClickTPToggle", {
-    Text = "Включить ClickTP",
+    Text = "Kích hoạt ClickTP",
     Default = false,
     
     Callback = function(Value)
         if Value then
             setupClickTP()
-            Library:Notify("ClickTP включен! Кликайте ЛКМ для Dịch chuyểnации", 3)
+            Library:Notify("ClickTP đã được kích hoạt! Nhấp chuột trái để Dịch chuyển", 3)
         end
     end,
 })
 
-TeleportGroup:AddButton("Dịch chuyển к ближайшему игроку", function()
+TeleportGroup:AddButton("Dịch chuyển đến người chơi gần nhất", function()
     teleportToNearestPlayer()
 end)
 
@@ -1673,7 +1673,7 @@ local WaypointsGroup = Tabs.Teleport:AddRightGroupbox("Waypoints")
 local waypointNameInput = WaypointsGroup:AddInput("WaypointNameInput", {
     Text = "Tên Waypoint",
     Default = "Waypoint",
-    Tooltip = "Nhập tên для сохранения позиции",
+    Tooltip = "Nhập tên vị trí",
     Placeholder = "Nhập tên",
 })
 
@@ -1688,7 +1688,7 @@ local waypointsList = WaypointsGroup:AddDropdown("WaypointsList", {
     Text = "Waypoint đã lưu",
     Default = 1,
     Values = {},
-    Tooltip = "Выберите waypoint для Dịch chuyểnации",
+    Tooltip = "Chọn một điểm tham chiếu cho Dịch chuyển",
     
     Callback = function(Value)
         _G.SelectedWaypoint = Value
@@ -1711,7 +1711,7 @@ local function updateWaypointsList()
     end
 end
 
-WaypointsGroup:AddButton("Dịch chuyển к выбранному Waypoint", function()
+WaypointsGroup:AddButton("Dịch chuyển đến điểm tham chiếu đã chọn", function()
     if _G.SelectedWaypoint then
         for id, waypoint in pairs(_G.Waypoints) do
             local displayName = waypoint.name .. " (" .. math.floor(waypoint.position.X) .. ", " .. math.floor(waypoint.position.Y) .. ", " .. math.floor(waypoint.position.Z) .. ")"
@@ -1721,7 +1721,7 @@ WaypointsGroup:AddButton("Dịch chuyển к выбранному Waypoint", fun
             end
         end
     end
-    Library:Notify("Выберите waypoint из списка!", 3)
+    Library:Notify("Hãy chọn một điểm đến từ danh sách!", 3)
 end)
 
 WaypointsGroup:AddButton("Xóa Waypoint đã chọn", function()
