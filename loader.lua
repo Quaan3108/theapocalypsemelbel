@@ -851,7 +851,7 @@ local function saveWaypoint(name)
         timestamp = os.time()
     }
     
-    Library:Notify("Waypoint '" .. name .. "' сохранен!", 3)
+    Library:Notify("Waypoint '" .. name .. "' Đã lưu!", 3)
     return waypointId
 end
 
@@ -869,14 +869,14 @@ local function teleportToWaypoint(waypointId)
     if not humanoidRootPart then return end
     
     humanoidRootPart.CFrame = CFrame.new(waypoint.position + Vector3.new(0, 5, 0))
-    Library:Notify("Dịch chuyểnирован к '" .. waypoint.name .. "'", 3)
+    Library:Notify("Dịch chuyển tới '" .. waypoint.name .. "'", 3)
 end
 
 local function deleteWaypoint(waypointId)
     if _G.Waypoints[waypointId] then
         local name = _G.Waypoints[waypointId].name
         _G.Waypoints[waypointId] = nil
-        Library:Notify("Waypoint '" .. name .. "' удален!", 3)
+        Library:Notify("Waypoint '" .. name .. "' LOẠI BỎ!", 3)
     end
 end
 
@@ -959,7 +959,7 @@ local function teleportToNearestPlayer()
     if not targetHumanoidRootPart then return end
     
     humanoidRootPart.CFrame = CFrame.new(targetHumanoidRootPart.Position + Vector3.new(0, 5, 0))
-    Library:Notify("Dịch chuyểnирован к " .. nearestPlayer.Name .. " (" .. math.floor(distance) .. " studs)", 3)
+    Library:Notify("Dịch chuyển tới " .. nearestPlayer.Name .. " (" .. math.floor(distance) .. " studs)", 3)
 end
 
 local function moveToObject(objPosition, speed)
@@ -1711,7 +1711,7 @@ local function updateWaypointsList()
     end
 end
 
-WaypointsGroup:AddButton("Dịch chuyển đến điểm tham chiếu đã chọn", function()
+WaypointsGroup:AddButton("Dịch chuyển đến waypoint", function()
     if _G.SelectedWaypoint then
         for id, waypoint in pairs(_G.Waypoints) do
             local displayName = waypoint.name .. " (" .. math.floor(waypoint.position.X) .. ", " .. math.floor(waypoint.position.Y) .. ", " .. math.floor(waypoint.position.Z) .. ")"
@@ -1735,12 +1735,12 @@ WaypointsGroup:AddButton("Xóa Waypoint đã chọn", function()
             end
         end
     end
-    Library:Notify("Выберите waypoint из списка!", 3)
+    Library:Notify("Hãy chọn một waypoint từ danh sách!", 3)
 end)
 
 WaypointsGroup:AddButton("Cập nhật danh sách Waypoint", function()
     updateWaypointsList()
-    Library:Notify("Danh sách điểm định vị đã được cập nhật!", 3)
+    Library:Notify("Danh sách waypoint đã được cập nhật!", 3)
 end)
 
 local HitboxGroup = Tabs.Hitbox:AddLeftGroupbox("Hitbox Multiplier")
@@ -1756,7 +1756,7 @@ HitboxGroup:AddToggle("AutoHitboxToggle", {
 })
 
 HitboxGroup:AddSlider("HitboxMultiplier", {
-    Text = "Множитель хитбокса",
+    Text = "Hitbox sieu to",
     Default = 5,
     Min = 1,
     Max = 20,
