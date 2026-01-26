@@ -41,7 +41,7 @@ import { openPurchaseUI } from "./shopUI.js";
 import { getFavorites } from "./favoriteUtils.js";
 import { calculatePrice, getLastPrice, setLastPrice } from "./priceUtils.js";
 import { getTransactionHistory } from "./historyUtils.js";
-import { applyRarityFluctuation, updatePrices } from "./priceUtils";
+import { applyRarityFluctuation, updatePrices } from "./priceUtils.js";
 
 const allItems = [ ...logs, ...planks, ...stone, ...decorativeStone, ...sandstone, ...wool, ...concrete, ...terracotta, ...glazedTerracotta, ...quartzBlock, ...coralBlock, ...functionalBlock, ...glassBlock, ...otherBlock, ...armor, ...ores, ...farm, ...food, ...dye, ...redstone, ...tools, ...miscellaneous ];
 
@@ -899,3 +899,4 @@ world.beforeEvents.chatSend.subscribe(chat => {
     }
 
 });
+
