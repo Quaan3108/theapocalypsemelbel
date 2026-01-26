@@ -91,15 +91,12 @@ system.runInterval(() => {
   updatePrices(allItems);
 }, 200);
 
-system.beforeEvents.startup.subscribe((init) => {
-  const shopCommand = ({
-    name: "shop:shop",
-    description: "Open the Advanced Shop UI",
-    permissionLevel: CommandPermissionLevel.Any,
-    cheatsRequired: false,
-    optionalParameters: [],
-    mandatoryParameters: [],
-  });
+const shopCommand = {
+  name: "shop",
+  description: "Open the Advanced Shop UI",
+  permissionLevel: CommandPermissionLevel.Any,
+  cheatsRequired: false,
+};
 
   init.customCommandRegistry.registerCommand(
     shopCommand,
@@ -900,4 +897,5 @@ world.beforeEvents.chatSend.subscribe(chat => {
         chat.cancel = true;
         system.runTimeout(() => openShopMenu(player), 0);
     }
+
 });
